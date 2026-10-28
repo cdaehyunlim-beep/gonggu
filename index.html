@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>공구 트래커</title>
+<style>
+  :root {
+    --bg: #faf9f6; --panel: #ffffff; --fg: #1f1e1c; --muted: #6b6862; --line: #e7e4dd;
+    --ok: #2f7d4f; --bad: #c2412d; --warn: #a86a12; --chip-on-bg: #1f1e1c; --chip-on-fg: #faf9f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1b1a18; --panel: #242320; --fg: #ece9e2; --muted: #a39f97; --line: #3a3833;
+      --ok: #6cc28f; --bad: #ef7d69; --warn: #e2a84e; --chip-on-bg: #ece9e2; --chip-on-fg: #1b1a18; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", sans-serif; line-height: 1.5; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 16px 48px; display: flex; flex-direction: column; gap: 20px; }
+  h1 { font-family: Georgia, "Nanum Myeongjo", serif; font-weight: 400; font-size: 1.9rem; margin: 0; }
+  .sub { color: var(--muted); margin: 4px 0 0; font-size: .95rem; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 12px; }
+  .tile, .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .tile .lbl { color: var(--muted); font-size: .8rem; }
+  .tile .num { font-family: Georgia, serif; font-size: 2rem; font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .card h2 { font-size: 1.05rem; font-weight: 600; margin: 0; }
+  .note { color: var(--muted); font-size: .8rem; margin: 4px 0 12px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+  .chip { font: inherit; font-size: .82rem; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--chip-on-bg); color: var(--chip-on-fg); border-color: var(--chip-on-bg); }
+  select, input[type=search] { font: inherit; font-size: .82rem; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+  input[type=search] { min-width: 0; flex: 1 1 140px; max-width: 220px; }
+  .tablewrap { overflow: auto; max-height: 75vh; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  th { position: sticky; top: 0; background: var(--panel); text-align: left; font-weight: 600; color: var(--muted); font-size: .78rem; padding: 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  td { padding: 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.brand { font-weight: 600; white-space: nowrap; }
+  td.muted { color: var(--muted); font-size: .8rem; }
+  tr.done td { color: var(--muted); }
+  .badge { display: inline-block; white-space: nowrap; font-size: .76rem; padding: 1px 8px; border-radius: 999px; border: 1px solid currentColor; }
+  .s-live { color: var(--ok); } .s-today { color: var(--bad); } .s-soon { color: var(--warn); } .s-hold, .s-done { color: var(--muted); }
+  a { color: inherit; }
+  .empty { color: var(--muted); padding: 16px 8px; }
+  @media (max-width: 640px) { .hide-narrow { display: none; } h1 { font-size: 1.6rem; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>인플루언서 공구 트래커</h1>
+    <p class="sub">인스타그램 인플루언서들의 공동구매 일정을 매일 오전 10시에 확인해 정리해요. <span id="updated"></span></p>
+  </header>
+
+  <section class="tiles">
+    <div class="tile"><div class="lbl">진행 중</div><div class="num" id="n-live">–</div></div>
+    <div class="tile"><div class="lbl">오늘 마감</div><div class="num" id="n-today">–</div></div>
+    <div class="tile"><div class="lbl">오픈 예정 · 연기</div><div class="num" id="n-soon">–</div></div>
+    <div class="tile"><div class="lbl">최근 종료</div><div class="num" id="n-done">–</div></div>
+  </section>
+
+  <section class="card">
+    <h2>공구 목록</h2>
+    <p class="note">인스타 게시물 캡션, 프로필 소개, 프로필 링크(인포크·리틀리·공식몰) 기준이에요. 마감일이 안 적힌 건 ‘미공지’로 두었어요.</p>
+    <div class="controls">
+      <button class="chip" data-st="" aria-pressed="true">전체</button>
+      <button class="chip" data-st="live" aria-pressed="false">진행 중</button>
+      <button class="chip" data-st="soon" aria-pressed="false">오픈 예정 · 연기</button>
+      <button class="chip" data-st="done" aria-pressed="false">종료</button>
+      <select id="who" aria-label="인플루언서"><option value="">모든 인플루언서</option></select>
+      <input id="q" type="search" placeholder="브랜드·제품 검색" aria-label="검색">
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>인플루언서</th><th>브랜드</th><th>제품</th><th>기간</th><th>상태</th><th class="hide-narrow">메모</th><th>출처</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="empty" id="empty" hidden>조건에 맞는 공구가 없어요.</div>
+    </div>
+  </section>
+</div>
+
+<script>
+  const GROUP = { '진행 중': 'live', '오늘 마감': 'live', '오픈 예정': 'soon', '연기': 'soon', '종료': 'done' };
+  const BADGE = { '진행 중': 's-live', '오늘 마감': 's-today', '오픈 예정': 's-soon', '연기': 's-hold', '종료': 's-done' };
+  const ORDER = { '오늘 마감': 0, '진행 중': 1, '오픈 예정': 2, '연기': 3, '종료': 4 };
+  const state = { st: '', who: '', q: '' };
+  let ROWS = [];
+
+  function render() {
+    const tbody = document.getElementById('rows');
+    tbody.replaceChildren();
+    const q = state.q.trim().toLowerCase();
+    const list = ROWS
+      .filter(r => (!state.st || GROUP[r.status] === state.st) && (!state.who || r.influencer === state.who)
+        && (!q || [r.brand, r.product, r.note, r.influencer].join(' ').toLowerCase().includes(q)))
+      .sort((a, b) => (ORDER[a.status] ?? 9) - (ORDER[b.status] ?? 9)
+        || (GROUP[a.status] === 'soon' ? String(a.start || '9').localeCompare(String(b.start || '9')) : String(b.start || '').localeCompare(String(a.start || ''))));
+    for (const r of list) {
+      const tr = document.createElement('tr');
+      if (r.status === '종료') tr.className = 'done';
+      const td = (t, c) => { const e = document.createElement('td'); if (c) e.className = c; e.textContent = t ?? ''; tr.append(e); return e; };
+      td(r.influencer); td(r.brand, 'brand'); td(r.product); td(r.period);
+      const b = document.createElement('span'); b.className = 'badge ' + (BADGE[r.status] || 's-hold'); b.textContent = r.status; td('').append(b);
+      td(r.note, 'muted hide-narrow');
+      const lc = td('');
+      if (/^https:\/\//.test(r.source || '')) {
+        const a = document.createElement('a'); a.href = r.source; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.textContent = r.source.includes('instagram.com/p/') ? '게시물' : r.source.includes('instagram.com') ? '프로필' : '링크';
+        lc.append(a);
+      }
+      tbody.append(tr);
+    }
+    document.getElementById('empty').hidden = list.length > 0;
+    document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String((c.dataset.st || '') === state.st)));
+  }
+
+  function counts() {
+    const n = s => ROWS.filter(r => s.includes(r.status)).length;
+    document.getElementById('n-live').textContent = n(['진행 중', '오늘 마감']);
+    document.getElementById('n-today').textContent = n(['오늘 마감']);
+    document.getElementById('n-soon').textContent = n(['오픈 예정', '연기']);
+    document.getElementById('n-done').textContent = n(['종료']);
+  }
+
+  document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => { state.st = c.dataset.st || ''; render(); }));
+  document.getElementById('who').addEventListener('change', e => { state.who = e.target.value; render(); });
+  document.getElementById('q').addEventListener('input', e => { state.q = e.target.value; render(); });
+
+  fetch('data.json?t=' + Date.now(), { cache: 'no-store' })
+    .then(r => r.json())
+    .then(d => {
+      ROWS = Array.isArray(d) ? d : (d.rows || []);
+      if (d.updated) {
+        const t = new Date(d.updated);
+        document.getElementById('updated').textContent = '마지막 확인: ' + t.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+      }
+      const sel = document.getElementById('who');
+      [...new Set(ROWS.map(r => r.influencer))].sort().forEach(n => sel.append(new Option(n, n)));
+      counts(); render();
+    })
+    .catch(() => { document.getElementById('empty').textContent = '데이터를 불러오지 못했어요. 잠시 후 새로고침해 주세요.'; document.getElementById('empty').hidden = false; });
+</script>
+</body>
+</html>
