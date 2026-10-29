@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28T02:15:00Z",
+ "updated": "2026-10-29T01:30:00Z",
  "rows": [
   {
    "id": "casa_rim-cristema-lyra-2",
@@ -45,7 +45,7 @@
    "start": "2026-10-29",
    "end": "",
    "period": "10/29 오픈 예정",
-   "status": "오픈 예정",
+   "status": "진행 중",
    "note": "프로필 소개에 \"29 고추가루\"로만 표기 (10월로 추정)",
    "source": "https://www.instagram.com/casa_rim/"
   },
@@ -225,7 +225,7 @@
    "start": "2026-10-20",
    "end": "2026-10-28",
    "period": "10/20 11시 ~ 10/28 23:59",
-   "status": "오늘 마감",
+   "status": "종료",
    "note": "",
    "source": "https://link.inpock.co.kr/deelisa"
   },
@@ -237,7 +237,7 @@
    "start": "2026-10-22",
    "end": "2026-10-28",
    "period": "10/22 10시 ~ 10/28 23:59",
-   "status": "오늘 마감",
+   "status": "종료",
    "note": "",
    "source": "https://link.inpock.co.kr/deelisa"
   },
@@ -249,7 +249,7 @@
    "start": "2026-10-26",
    "end": "2026-10-28",
    "period": "10/26 10시 ~ 10/28 23:59",
-   "status": "오늘 마감",
+   "status": "종료",
    "note": "3개월 주기로 재공구",
    "source": "https://www.instagram.com/p/De8BLOakyYF/"
   },
@@ -369,7 +369,7 @@
    "start": "2026-10-19",
    "end": "2026-10-28",
    "period": "10/19 10시 ~ 10/28 23:59",
-   "status": "오늘 마감",
+   "status": "종료",
    "note": "",
    "source": "https://link.inpock.co.kr/married_rim"
   },
@@ -441,7 +441,7 @@
    "start": "2026-10-29",
    "end": "",
    "period": "10/29(목) 오픈 예정",
-   "status": "오픈 예정",
+   "status": "진행 중",
    "note": "프로필 소개 일정",
    "source": "https://www.instagram.com/dada_salrim/"
   },
@@ -561,7 +561,7 @@
    "start": "2026-10-29",
    "end": "",
    "period": "10/29(목) 10시 오픈 예정",
-   "status": "오픈 예정",
+   "status": "진행 중",
    "note": "링크 페이지 미리보기, 발사믹은 러브모모 단독",
    "source": "https://link.inpock.co.kr/lovemomo"
   },
@@ -597,7 +597,7 @@
    "start": "2026-10-29",
    "end": "",
    "period": "10/29(목) 10시 런칭 예정",
-   "status": "오픈 예정",
+   "status": "진행 중",
    "note": "런칭 프로모션, 리에종드로렌 검색해 접속",
    "source": "https://www.instagram.com/p/De_5yszk7pk/"
   },
@@ -681,7 +681,7 @@
    "start": "2026-10-26",
    "end": "2026-10-28",
    "period": "10/26 10시 ~ 10/28 23:59",
-   "status": "오늘 마감",
+   "status": "종료",
    "note": "",
    "source": "https://link.inpock.co.kr/unidongdong"
   },
@@ -693,7 +693,7 @@
    "start": "2026-10-26",
    "end": "2026-10-28",
    "period": "10/26 11시 ~ 10/28 23:59",
-   "status": "오늘 마감",
+   "status": "종료",
    "note": "",
    "source": "https://link.inpock.co.kr/unidongdong"
   },
@@ -705,7 +705,7 @@
    "start": "",
    "end": "2026-10-28",
    "period": "오늘 마감",
-   "status": "오늘 마감",
+   "status": "종료",
    "note": "",
    "source": "https://link.inpock.co.kr/unidongdong"
   },
@@ -933,7 +933,7 @@
    "start": "",
    "end": "2026-10-28",
    "period": "오늘 마감",
-   "status": "오늘 마감",
+   "status": "종료",
    "note": "",
    "source": "https://link.inpock.co.kr/ddohuni_mom"
   },
@@ -945,7 +945,7 @@
    "start": "2026-10-29",
    "end": "",
    "period": "10/29(목) 10시 오픈",
-   "status": "오픈 예정",
+   "status": "진행 중",
    "note": "",
    "source": "https://link.inpock.co.kr/ddohuni_mom"
   },
@@ -960,6 +960,150 @@
    "status": "종료",
    "note": "",
    "source": "https://inpk.link/ohsaemq"
+  },
+  {
+   "id": "oxo-minidudu",
+   "influencer": "@oxo._.dduddu",
+   "brand": "미니두두",
+   "product": "두두스카프 VER.2 (세트·단품)",
+   "start": "2026-10-29",
+   "end": "2026-10-31",
+   "period": "10/29 10시 ~ 10/31",
+   "status": "진행 중",
+   "note": "8장 구매 시 1장 추가",
+   "source": "https://www.instagram.com/p/DfDuVKfE1PH/"
+  },
+  {
+   "id": "oxo-hanil",
+   "influencer": "@oxo._.dduddu",
+   "brand": "한일",
+   "product": "분리형 물멍 가습기",
+   "start": "2026-10-28",
+   "end": "2026-11-01",
+   "period": "10/28 ~ 11/1",
+   "status": "진행 중",
+   "note": "공구가 219,000원",
+   "source": "https://www.instagram.com/p/DfBM-70E8Vl/"
+  },
+  {
+   "id": "oxo-frombebe",
+   "influencer": "@oxo._.dduddu",
+   "brand": "프롬베베 (CJ)",
+   "product": "(품목 미공지)",
+   "start": "2026-10-30",
+   "end": "",
+   "period": "10/30(금) 10시 오픈 · 라이브방송",
+   "status": "오픈 예정",
+   "note": "카드 할인 일정이 11/2까지 안내됨",
+   "source": "https://www.instagram.com/p/DfBk_kPvIq2/"
+  },
+  {
+   "id": "oxo-ugg",
+   "influencer": "@oxo._.dduddu",
+   "brand": "호주 UGG",
+   "product": "2026 전품목 (해외배송)",
+   "start": "",
+   "end": "",
+   "period": "기간 미표기",
+   "status": "진행 중",
+   "note": "",
+   "source": "https://inpk.link/withsellu"
+  },
+  {
+   "id": "oxo-artex",
+   "influencer": "@oxo._.dduddu",
+   "brand": "아텍스",
+   "product": "입체마스크 & 립밤",
+   "start": "",
+   "end": "",
+   "period": "기간 미표기",
+   "status": "진행 중",
+   "note": "한정수량",
+   "source": "https://inpk.link/withsellu"
+  },
+  {
+   "id": "oxo-babyshark",
+   "influencer": "@oxo._.dduddu",
+   "brand": "아기상어",
+   "product": "배변팬티",
+   "start": "",
+   "end": "",
+   "period": "기간 미표기",
+   "status": "진행 중",
+   "note": "",
+   "source": "https://inpk.link/withsellu"
+  },
+  {
+   "id": "oxo-florette",
+   "influencer": "@oxo._.dduddu",
+   "brand": "플로레떼",
+   "product": "캡슐세제",
+   "start": "",
+   "end": "",
+   "period": "기간 미표기",
+   "status": "진행 중",
+   "note": "",
+   "source": "https://inpk.link/withsellu"
+  },
+  {
+   "id": "udin-scrubdaddy",
+   "influencer": "@about_udin",
+   "brand": "스크럽대디",
+   "product": "클리너·세제 기획전 (최초 공구)",
+   "start": "2026-10-27",
+   "end": "2026-10-30",
+   "period": "10/27 11시 ~ 10/30 23:59",
+   "status": "진행 중",
+   "note": "",
+   "source": "https://link.inpock.co.kr/udin"
+  },
+  {
+   "id": "udin-pouch",
+   "influencer": "@about_udin",
+   "brand": "(브랜드 미표기)",
+   "product": "N천원대 정리파우치",
+   "start": "2026-11-03",
+   "end": "2026-11-07",
+   "period": "11/3 11시 ~ 11/7 23:59",
+   "status": "오픈 예정",
+   "note": "",
+   "source": "https://link.inpock.co.kr/udin"
+  },
+  {
+   "id": "udin-bissell",
+   "influencer": "@about_udin",
+   "brand": "비쎌",
+   "product": "스팀청소기 (3차)",
+   "start": "2026-11-05",
+   "end": "2026-11-08",
+   "period": "11/5 11시 ~ 11/8 23:59",
+   "status": "오픈 예정",
+   "note": "",
+   "source": "https://link.inpock.co.kr/udin"
+  },
+  {
+   "id": "udin-gorogoro",
+   "influencer": "@about_udin",
+   "brand": "고로고로",
+   "product": "돌돌이 (29cm 기획전, 4차)",
+   "start": "2026-11-09",
+   "end": "2026-11-12",
+   "period": "11/9 11시 ~ 11/12 23:59",
+   "status": "오픈 예정",
+   "note": "",
+   "source": "https://link.inpock.co.kr/udin"
+  },
+  {
+   "id": "dadamom-cleanlabel",
+   "influencer": "@da_da__mom",
+   "brand": "클린라벨",
+   "product": "원터치 밀폐용기(리뉴얼)·뽀송 스퀴지 (8차, 단독)",
+   "start": "2026-10-28",
+   "end": "2026-11-01",
+   "period": "10/28(수) 10시 ~ 11/1 23:59",
+   "status": "진행 중",
+   "note": "선착순 200명 이벤트",
+   "source": "https://www.instagram.com/p/DfBFsBPE8il/"
   }
  ]
 }
