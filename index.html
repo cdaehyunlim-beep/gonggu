@@ -38,7 +38,7 @@
   td.muted { color: var(--muted); font-size: .8rem; }
   tr.done td { color: var(--muted); }
   .badge { display: inline-block; white-space: nowrap; font-size: .76rem; padding: 1px 8px; border-radius: 999px; border: 1px solid currentColor; }
-  .s-live { color: var(--ok); } .s-today { color: var(--bad); } .s-soon { color: var(--warn); } .s-hold, .s-done { color: var(--muted); }
+  .s-live { color: var(--ok); } .s-today { color: var(--bad); } .s-new { color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, transparent); font-weight: 600; } .s-soon { color: var(--warn); } .s-hold, .s-done { color: var(--muted); }
   a { color: inherit; }
   .empty { color: var(--muted); padding: 16px 8px; }
   @media (max-width: 640px) { .hide-narrow { display: none; } h1 { font-size: 1.6rem; } }
@@ -53,6 +53,7 @@
 
   <section class="tiles">
     <div class="tile"><div class="lbl">진행 중</div><div class="num" id="n-live">–</div></div>
+    <div class="tile"><div class="lbl">오늘 오픈</div><div class="num" id="n-new">–</div></div>
     <div class="tile"><div class="lbl">오늘 마감</div><div class="num" id="n-today">–</div></div>
     <div class="tile"><div class="lbl">오픈 예정 · 연기</div><div class="num" id="n-soon">–</div></div>
     <div class="tile"><div class="lbl">최근 종료</div><div class="num" id="n-done">–</div></div>
@@ -80,9 +81,9 @@
 </div>
 
 <script>
-  const GROUP = { '진행 중': 'live', '오늘 마감': 'live', '오픈 예정': 'soon', '연기': 'soon', '종료': 'done' };
-  const BADGE = { '진행 중': 's-live', '오늘 마감': 's-today', '오픈 예정': 's-soon', '연기': 's-hold', '종료': 's-done' };
-  const ORDER = { '오늘 마감': 0, '진행 중': 1, '오픈 예정': 2, '연기': 3, '종료': 4 };
+  const GROUP = { '오늘 오픈': 'live', '진행 중': 'live', '오늘 마감': 'live', '오픈 예정': 'soon', '연기': 'soon', '종료': 'done' };
+  const BADGE = { '오늘 오픈': 's-new', '진행 중': 's-live', '오늘 마감': 's-today', '오픈 예정': 's-soon', '연기': 's-hold', '종료': 's-done' };
+  const ORDER = { '오늘 오픈': 0, '오늘 마감': 1, '진행 중': 2, '오픈 예정': 3, '연기': 4, '종료': 5 };
   const state = { st: '', who: '', q: '' };
   let ROWS = [];
 
@@ -116,7 +117,8 @@
 
   function counts() {
     const n = s => ROWS.filter(r => s.includes(r.status)).length;
-    document.getElementById('n-live').textContent = n(['진행 중', '오늘 마감']);
+    document.getElementById('n-live').textContent = n(['진행 중', '오늘 오픈', '오늘 마감']);
+    document.getElementById('n-new').textContent = n(['오늘 오픈']);
     document.getElementById('n-today').textContent = n(['오늘 마감']);
     document.getElementById('n-soon').textContent = n(['오픈 예정', '연기']);
     document.getElementById('n-done').textContent = n(['종료']);
