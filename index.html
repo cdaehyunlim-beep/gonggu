@@ -26,17 +26,24 @@
   .card h2 { font-size: 1.05rem; font-weight: 600; margin: 0; }
   .note { color: var(--muted); font-size: .8rem; margin: 4px 0 12px; }
   .sep { color: var(--muted); opacity: .5; }
-  td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.price { min-width: 6.5em; max-width: 10em; font-variant-numeric: tabular-nums; }
+  td.price .amt { font-weight: 600; white-space: nowrap; }
+  td.price .sub { display: block; color: var(--muted); font-size: .75rem; line-height: 1.35; margin-top: 2px; }
+  td.prod { min-width: 8em; max-width: 16em; }
+  td.prod .cat { display: block; color: var(--muted); font-size: .72rem; margin-top: 3px; }
+  td.period { min-width: 7em; max-width: 9em; font-size: .82rem; }
+  td.memo { min-width: 12em; max-width: 22em; }
+  td.status { white-space: nowrap; }
   .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
   .chip { font: inherit; font-size: .82rem; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
   .chip[aria-pressed="true"] { background: var(--chip-on-bg); color: var(--chip-on-fg); border-color: var(--chip-on-bg); }
   select, input[type=search] { font: inherit; font-size: .82rem; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
   input[type=search] { min-width: 0; flex: 1 1 140px; max-width: 220px; }
   .tablewrap { overflow: auto; max-height: 75vh; }
-  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; word-break: keep-all; overflow-wrap: anywhere; }
   th { position: sticky; top: 0; background: var(--panel); text-align: left; font-weight: 600; color: var(--muted); font-size: .78rem; padding: 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
   td { padding: 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  td.brand { font-weight: 600; white-space: nowrap; }
+  td.brand { font-weight: 600; min-width: 5em; max-width: 9em; }
   td.muted { color: var(--muted); font-size: .8rem; }
   tr.done td { color: var(--muted); }
   .badge { display: inline-block; white-space: nowrap; font-size: .76rem; padding: 1px 8px; border-radius: 999px; border: 1px solid currentColor; }
@@ -78,7 +85,7 @@
     </div>
     <div class="tablewrap">
       <table>
-        <thead><tr><th>인플루언서</th><th>브랜드</th><th>제품</th><th class="hide-narrow">카테고리</th><th>가격</th><th>기간</th><th>상태</th><th class="hide-narrow">메모</th><th>출처</th></tr></thead>
+        <thead><tr><th>인플루언서</th><th>브랜드</th><th>제품</th><th>가격</th><th>기간</th><th>상태</th><th class="hide-narrow">메모</th><th>출처</th></tr></thead>
         <tbody id="rows"></tbody>
       </table>
       <div class="empty" id="empty" hidden>조건에 맞는 공구가 없어요.</div>
@@ -106,9 +113,17 @@
       const tr = document.createElement('tr');
       if (r.status === '종료') tr.className = 'done';
       const td = (t, c) => { const e = document.createElement('td'); if (c) e.className = c; e.textContent = t ?? ''; tr.append(e); return e; };
-      td(r.influencer); td(r.brand, 'brand'); td(r.product); td(r.category, 'muted hide-narrow'); td(r.price, 'price'); td(r.period);
-      const b = document.createElement('span'); b.className = 'badge ' + (BADGE[r.status] || 's-hold'); b.textContent = r.status; td('').append(b);
-      td(r.note, 'muted hide-narrow');
+      td(r.influencer); td(r.brand, 'brand'); const pc = td(r.product, 'prod');
+      if (r.category) { const c = document.createElement('span'); c.className = 'cat'; c.textContent = r.category; pc.append(c); }
+      const pr = td('', 'price');
+      if (r.price) {
+        const m = String(r.price).match(/^(.*?원(?:대)?~?)\s*(.*)$/);
+        const a = document.createElement('span'); a.className = 'amt'; a.textContent = m ? m[1] : r.price; pr.append(a);
+        if (m && m[2]) { const s = document.createElement('span'); s.className = 'sub'; s.textContent = m[2]; pr.append(s); }
+      }
+      td(r.period, 'period');
+      const b = document.createElement('span'); b.className = 'badge ' + (BADGE[r.status] || 's-hold'); b.textContent = r.status; td('', 'status').append(b);
+      td(r.note, 'muted hide-narrow memo');
       const lc = td('');
       if (/^https:\/\//.test(r.source || '')) {
         const a = document.createElement('a'); a.href = r.source; a.target = '_blank'; a.rel = 'noopener noreferrer';
