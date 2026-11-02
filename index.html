@@ -25,6 +25,8 @@
   .tile .num { font-family: Georgia, serif; font-size: 2rem; font-variant-numeric: tabular-nums; margin-top: 2px; }
   .card h2 { font-size: 1.05rem; font-weight: 600; margin: 0; }
   .note { color: var(--muted); font-size: .8rem; margin: 4px 0 12px; }
+  .sep { color: var(--muted); opacity: .5; }
+  td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
   .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
   .chip { font: inherit; font-size: .82rem; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
   .chip[aria-pressed="true"] { background: var(--chip-on-bg); color: var(--chip-on-fg); border-color: var(--chip-on-bg); }
@@ -49,6 +51,7 @@
   <header>
     <h1>인플루언서 공구 트래커</h1>
     <p class="sub">인스타그램 인플루언서들의 공동구매 일정을 매일 오전 10시에 확인해 정리해요. <span id="updated"></span></p>
+    <p class="sub">담당 범위: 생활용품·생활가전·주방 생활용품·주방가전(샴푸 포함). 위 숫자는 담당 범위 공구만 센 값이에요.</p>
   </header>
 
   <section class="tiles">
@@ -61,8 +64,11 @@
 
   <section class="card">
     <h2>공구 목록</h2>
-    <p class="note">인스타 게시물 캡션, 프로필 소개, 프로필 링크(인포크·리틀리·공식몰) 기준이에요. 마감일이 안 적힌 건 ‘미공지’로 두었어요.</p>
+    <p class="note">인스타 게시물 캡션, 프로필 소개, 프로필 링크(인포크·리틀리·공식몰) 기준이에요. 마감일이 안 적힌 건 ‘미공지’로 두었어요. 가격은 담당 범위의 진행 중인 공구만, 캡션이나 열리는 판매 페이지에서 찾은 공구가 기준이에요(쿠폰·카드 할인 전, 옵션이 여럿이면 최저 옵션). 네이버 쇼핑 링크는 열 수 없어 비어 있을 수 있어요.</p>
     <div class="controls">
+      <button class="chip scope" data-scope="담당" aria-pressed="true">내 담당만</button>
+      <button class="chip scope" data-scope="" aria-pressed="false">모든 카테고리</button>
+      <span class="sep" aria-hidden="true">|</span>
       <button class="chip" data-st="" aria-pressed="true">전체</button>
       <button class="chip" data-st="live" aria-pressed="false">진행 중</button>
       <button class="chip" data-st="soon" aria-pressed="false">오픈 예정 · 연기</button>
@@ -72,7 +78,7 @@
     </div>
     <div class="tablewrap">
       <table>
-        <thead><tr><th>인플루언서</th><th>브랜드</th><th>제품</th><th>기간</th><th>상태</th><th class="hide-narrow">메모</th><th>출처</th></tr></thead>
+        <thead><tr><th>인플루언서</th><th>브랜드</th><th>제품</th><th class="hide-narrow">카테고리</th><th>가격</th><th>기간</th><th>상태</th><th class="hide-narrow">메모</th><th>출처</th></tr></thead>
         <tbody id="rows"></tbody>
       </table>
       <div class="empty" id="empty" hidden>조건에 맞는 공구가 없어요.</div>
@@ -84,7 +90,7 @@
   const GROUP = { '오늘 오픈': 'live', '진행 중': 'live', '오늘 마감': 'live', '오픈 예정': 'soon', '연기': 'soon', '종료': 'done' };
   const BADGE = { '오늘 오픈': 's-new', '진행 중': 's-live', '오늘 마감': 's-today', '오픈 예정': 's-soon', '연기': 's-hold', '종료': 's-done' };
   const ORDER = { '오늘 오픈': 0, '오늘 마감': 1, '진행 중': 2, '오픈 예정': 3, '연기': 4, '종료': 5 };
-  const state = { st: '', who: '', q: '' };
+  const state = { st: '', who: '', q: '', scope: '담당' };
   let ROWS = [];
 
   function render() {
@@ -92,15 +98,15 @@
     tbody.replaceChildren();
     const q = state.q.trim().toLowerCase();
     const list = ROWS
-      .filter(r => (!state.st || GROUP[r.status] === state.st) && (!state.who || r.influencer === state.who)
-        && (!q || [r.brand, r.product, r.note, r.influencer].join(' ').toLowerCase().includes(q)))
+      .filter(r => (!state.st || GROUP[r.status] === state.st) && (!state.who || r.influencer === state.who) && (!state.scope || r.scope === state.scope)
+        && (!q || [r.brand, r.product, r.note, r.influencer, r.category].join(' ').toLowerCase().includes(q)))
       .sort((a, b) => (ORDER[a.status] ?? 9) - (ORDER[b.status] ?? 9)
         || (GROUP[a.status] === 'soon' ? String(a.start || '9').localeCompare(String(b.start || '9')) : String(b.start || '').localeCompare(String(a.start || ''))));
     for (const r of list) {
       const tr = document.createElement('tr');
       if (r.status === '종료') tr.className = 'done';
       const td = (t, c) => { const e = document.createElement('td'); if (c) e.className = c; e.textContent = t ?? ''; tr.append(e); return e; };
-      td(r.influencer); td(r.brand, 'brand'); td(r.product); td(r.period);
+      td(r.influencer); td(r.brand, 'brand'); td(r.product); td(r.category, 'muted hide-narrow'); td(r.price, 'price'); td(r.period);
       const b = document.createElement('span'); b.className = 'badge ' + (BADGE[r.status] || 's-hold'); b.textContent = r.status; td('').append(b);
       td(r.note, 'muted hide-narrow');
       const lc = td('');
@@ -112,11 +118,12 @@
       tbody.append(tr);
     }
     document.getElementById('empty').hidden = list.length > 0;
-    document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String((c.dataset.st || '') === state.st)));
+    document.querySelectorAll('.chip:not(.scope)').forEach(c => c.setAttribute('aria-pressed', String((c.dataset.st || '') === state.st)));
+    document.querySelectorAll('.chip.scope').forEach(c => c.setAttribute('aria-pressed', String((c.dataset.scope || '') === state.scope)));
   }
 
   function counts() {
-    const n = s => ROWS.filter(r => s.includes(r.status)).length;
+    const n = s => ROWS.filter(r => r.scope === '담당' && s.includes(r.status)).length;
     document.getElementById('n-live').textContent = n(['진행 중', '오늘 오픈', '오늘 마감']);
     document.getElementById('n-new').textContent = n(['오늘 오픈']);
     document.getElementById('n-today').textContent = n(['오늘 마감']);
@@ -124,7 +131,8 @@
     document.getElementById('n-done').textContent = n(['종료']);
   }
 
-  document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => { state.st = c.dataset.st || ''; render(); }));
+  document.querySelectorAll('.chip:not(.scope)').forEach(c => c.addEventListener('click', () => { state.st = c.dataset.st || ''; render(); }));
+  document.querySelectorAll('.chip.scope').forEach(c => c.addEventListener('click', () => { state.scope = c.dataset.scope || ''; render(); }));
   document.getElementById('who').addEventListener('change', e => { state.who = e.target.value; render(); });
   document.getElementById('q').addEventListener('input', e => { state.q = e.target.value; render(); });
 
