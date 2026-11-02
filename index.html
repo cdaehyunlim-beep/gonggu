@@ -34,6 +34,7 @@
   td.period { min-width: 7em; max-width: 9em; font-size: .82rem; }
   td.memo { min-width: 12em; max-width: 22em; }
   td.status { white-space: nowrap; }
+  td.who, td.src { white-space: nowrap; font-size: .82rem; }
   .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
   .chip { font: inherit; font-size: .82rem; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
   .chip[aria-pressed="true"] { background: var(--chip-on-bg); color: var(--chip-on-fg); border-color: var(--chip-on-bg); }
@@ -113,7 +114,7 @@
       const tr = document.createElement('tr');
       if (r.status === '종료') tr.className = 'done';
       const td = (t, c) => { const e = document.createElement('td'); if (c) e.className = c; e.textContent = t ?? ''; tr.append(e); return e; };
-      td(r.influencer); td(r.brand, 'brand'); const pc = td(r.product, 'prod');
+      td(r.influencer, 'who'); td(r.brand, 'brand'); const pc = td(r.product, 'prod');
       if (r.category) { const c = document.createElement('span'); c.className = 'cat'; c.textContent = r.category; pc.append(c); }
       const pr = td('', 'price');
       if (r.price) {
@@ -124,7 +125,7 @@
       td(r.period, 'period');
       const b = document.createElement('span'); b.className = 'badge ' + (BADGE[r.status] || 's-hold'); b.textContent = r.status; td('', 'status').append(b);
       td(r.note, 'muted hide-narrow memo');
-      const lc = td('');
+      const lc = td('', 'src');
       if (/^https:\/\//.test(r.source || '')) {
         const a = document.createElement('a'); a.href = r.source; a.target = '_blank'; a.rel = 'noopener noreferrer';
         a.textContent = r.source.includes('instagram.com/p/') ? '게시물' : r.source.includes('instagram.com') ? '프로필' : '링크';
