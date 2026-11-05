@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T01:25:00Z",
+ "updated": "2026-11-05T01:25:26Z",
  "rows": [
   {
    "id": "casa_rim-cristema-lyra-2",
@@ -57,8 +57,8 @@
    "start": "2026-10-29",
    "end": "2026-11-04",
    "period": "10/29(목) 11시 ~ 11/4(수) 23:59",
-   "status": "오늘 마감",
-   "note": "한정수량, 주문 후 당일 분쇄·포장",
+   "status": "종료",
+   "note": "한정수량, 주문 후 당일 분쇄·포장 / 공식몰 공구중 목록에서 내려감",
    "source": "https://www.instagram.com/p/DfD0JYlIxvw/"
   },
   {
@@ -83,13 +83,13 @@
    "product": "휴젠뜨 기획전 (신상 베노 최초공개·노바·휴젠뜨3)",
    "category": "생활가전",
    "scope": "담당",
-   "price": "",
+   "price": "노바 339,000원 (온라인가 429,000원) / 베노 409,000원 (온라인가 569,000원) / 휴젠뜨3 549,000원 (온라인가 770,000원)",
    "start": "2026-11-05",
-   "end": "",
-   "period": "11/5(목) 11시 오픈",
-   "status": "오픈 예정",
-   "note": "11/3 릴스 캡션 \"11/5(목)오전11시 오픈\", 프로필 소개 \"5 힘펠신제품 최초런칭\"",
-   "source": "https://www.instagram.com/p/DfTD3uCycFr/"
+   "end": "2026-11-11",
+   "period": "11/5(목) 11시 ~ 11/11(수) 23:59",
+   "status": "오늘 오픈",
+   "note": "11/3 릴스 캡션 \"11/5(목)오전11시 오픈\", 프로필 소개 \"5 힘펠신제품 최초런칭\" / 베노 까사림 최초공개, 노바+베노 세트 1만원 추가할인, 방문설치비 7만원 별도",
+   "source": "https://www.instagram.com/p/DfUaaj3o6Jk/"
   },
   {
    "id": "casa_rim-luftrum",
@@ -387,7 +387,7 @@
    "start": "2026-11-04",
    "end": "2026-11-08",
    "period": "11/4 10시 ~ 11/8 23:59",
-   "status": "오늘 오픈",
+   "status": "진행 중",
    "note": "CJ온스타일 판매 페이지 \"[최대66%OFF] 드엘리사x이너시아 생리대 특가\"에서 가격 확인",
    "source": "https://display.cjonstyle.com/p/mocode/M1243627"
   },
@@ -402,7 +402,7 @@
    "start": "2026-11-05",
    "end": "2026-11-08",
    "period": "11/5 10시 ~ 11/8 23:59",
-   "status": "오픈 예정",
+   "status": "오늘 오픈",
    "note": "",
    "source": "https://link.inpock.co.kr/deelisa"
   },
@@ -416,8 +416,8 @@
    "price": "",
    "start": "2026-11-05",
    "end": "2026-11-08",
-   "period": "11/5 10:30 ~ 11/8 23:59",
-   "status": "오픈 예정",
+   "period": "11/5 11시 ~ 11/8 23:59",
+   "status": "오늘 오픈",
    "note": "",
    "source": "https://link.inpock.co.kr/deelisa"
   },
@@ -492,8 +492,8 @@
    "start": "2026-10-27",
    "end": "",
    "period": "10/27 10시 ~ 마감 미공지",
-   "status": "진행 중",
-   "note": "선착순 50명 네이버페이 증정",
+   "status": "종료",
+   "note": "선착순 50명 네이버페이 증정 / 링크 페이지에 고객센터 링크만 남음",
    "source": "https://www.instagram.com/p/De-i_Gjk_85/"
   },
   {
@@ -642,7 +642,7 @@
    "start": "2026-11-04",
    "end": "2026-11-07",
    "period": "11/4 10시 ~ 11/8 0시",
-   "status": "오늘 오픈",
+   "status": "진행 중",
    "note": "링크 페이지는 11/4 10시 ~ 11/8 0시, JBJ 판매 페이지 제목엔 [11/4-11/11]로 표기 / 세탁바구니 구매 시 측면바스켓 증정",
    "source": "https://jbjkorea.co.kr/product/detail.html?product_no=887"
   },
@@ -865,10 +865,10 @@
    "scope": "제외",
    "price": "",
    "start": "",
-   "end": "2026-11-04",
-   "period": "~ 11/4 (연장 추정)",
+   "end": "2026-11-05",
+   "period": "~ 11/5 (연장 추정)",
    "status": "오늘 마감",
-   "note": "링크 페이지 '오늘 마감' 묶음에 계속 표기 (연장 추정) / 11/2에도 링크 페이지 '오늘 마감' 묶음에 표기 (연장 추정) / 11/3에도 링크 페이지 \"오늘 마감\" 표기 / 11/4에도 링크 페이지 \"오늘 마감\" 표기",
+   "note": "링크 페이지 '오늘 마감' 묶음에 계속 표기 (연장 추정) / 11/2에도 링크 페이지 '오늘 마감' 묶음에 표기 (연장 추정) / 11/3에도 링크 페이지 \"오늘 마감\" 표기 / 11/4에도 링크 페이지 \"오늘 마감\" 표기 / 11/5에도 링크 페이지 \"오늘 마감\" 표기",
    "source": "https://link.inpock.co.kr/unidongdong"
   },
   {
@@ -882,8 +882,8 @@
    "start": "2026-10-27",
    "end": "2026-11-04",
    "period": "10/27 10시 ~ 11/4 23:59",
-   "status": "오늘 마감",
-   "note": "마감 10/31 → 11/1로 연장 / 11/2에도 링크 페이지 '오늘 마감' 묶음에 표기 (연장 추정) / 11/3 링크 일정표에 11/4 23:59 마감으로 표기",
+   "status": "종료",
+   "note": "마감 10/31 → 11/1로 연장 / 11/2에도 링크 페이지 '오늘 마감' 묶음에 표기 (연장 추정) / 11/3 링크 일정표에 11/4 23:59 마감으로 표기 / 링크 페이지에서 내려감",
    "source": "https://link.inpock.co.kr/unidongdong"
   },
   {
@@ -957,7 +957,7 @@
    "start": "2026-11-03",
    "end": "2026-11-05",
    "period": "11/3 10시 ~ 11/5 23:59",
-   "status": "진행 중",
+   "status": "오늘 마감",
    "note": "",
    "source": "https://link.inpock.co.kr/unidongdong"
   },
@@ -972,7 +972,7 @@
    "start": "2026-11-04",
    "end": "2026-11-11",
    "period": "11/4 20시 ~ 11/11 23:59",
-   "status": "오늘 오픈",
+   "status": "진행 중",
    "note": "",
    "source": "https://link.inpock.co.kr/unidongdong"
   },
@@ -1332,8 +1332,8 @@
    "start": "2026-11-05",
    "end": "2026-11-08",
    "period": "11/5 11시 ~ 11/8 23:59",
-   "status": "오픈 예정",
-   "note": "",
+   "status": "오늘 오픈",
+   "note": "가격: 캡션·판매 페이지에서 미확인 (캡션엔 \"10만원대\"만, 구매 링크는 11시 오픈 후 DM 제공)",
    "source": "https://link.inpock.co.kr/udin"
   },
   {
@@ -1437,8 +1437,8 @@
    "start": "2026-11-02",
    "end": "2026-11-04",
    "period": "11/2(월) ~ 11/4(수) 자정",
-   "status": "오늘 마감",
-   "note": "사전예고 이벤트, 오픈 전 알림 6,500개 / 11/3 게시물 \"내일 자정 마감\"",
+   "status": "종료",
+   "note": "사전예고 이벤트, 오픈 전 알림 6,500개 / 11/3 게시물 \"내일 자정 마감\" / 11/4 마감 (링크 페이지엔 \"주문폭주\"로 남아 있음)",
    "source": "https://www.instagram.com/p/DfOFDMuEgfN/"
   },
   {
@@ -1510,10 +1510,10 @@
    "scope": "제외",
    "price": "",
    "start": "2026-10-29",
-   "end": "2026-11-04",
-   "period": "10/29(목) 11시 ~ 11/4 자정",
-   "status": "오늘 마감",
-   "note": "한정 수량 소진 시 마감 / 바이오엔 '라피네 사계절 양면 이불'로 적혀 있어 품명 표기가 다름",
+   "end": "",
+   "period": "10/29(목) 11시 ~ 11/4 자정 예정 → 연장 추정 (새 마감 미공지)",
+   "status": "진행 중",
+   "note": "한정 수량 소진 시 마감 / 바이오엔 '라피네 사계절 양면 이불'로 적혀 있어 품명 표기가 다름 / 11/5에도 링크 페이지와 바이오(라피네 사계절 양면 이불)에 open 표기",
    "source": "https://www.instagram.com/p/DfDkByfktrZ/"
   },
   {
@@ -1527,7 +1527,7 @@
    "start": "2026-11-02",
    "end": "2026-11-05",
    "period": "11/2(월) 11시 ~ 11/5 자정",
-   "status": "진행 중",
+   "status": "오늘 마감",
    "note": "예약발송(11/5, 11/13) 옵션 있음",
    "source": "https://www.instagram.com/p/DfODsy3Euia/"
   },
@@ -1535,16 +1535,16 @@
    "id": "fairy-vinne",
    "influencer": "@fairy__mom",
    "brand": "빈느",
-   "product": "마스크팩 & 팩트",
+   "product": "콜라겐 마스크팩 & 광채쿠션",
    "category": "뷰티",
    "scope": "제외",
    "price": "",
    "start": "2026-11-05",
    "end": "2026-11-08",
    "period": "11/5(목) 11시 ~ 11/8(일) 자정",
-   "status": "오픈 예정",
+   "status": "오늘 오픈",
    "note": "프로필 소개 일정 / 11/2 공구예고 캡션에서 기간 확인",
-   "source": "https://www.instagram.com/p/DfPBZeByD-n/"
+   "source": "https://www.instagram.com/p/DfVlmZGodEt/"
   },
   {
    "id": "fairy-wellpin",
@@ -1684,7 +1684,7 @@
   {
    "id": "salgu-bamboo",
    "influencer": "@apricot_tree11",
-   "brand": "(브랜드 미공지)",
+   "brand": "뱀부500",
    "product": "천연 대나무 뱀부휴지 & 키친타올",
    "category": "생활용품",
    "scope": "담당",
@@ -1692,9 +1692,9 @@
    "start": "2026-11-05",
    "end": "2026-11-11",
    "period": "11/5 10시 ~ 11/11 23:34",
-   "status": "오픈 예정",
-   "note": "프로필 소개 일정 / 링크 페이지 일정표로 마감일 확인",
-   "source": "https://www.instagram.com/apricot_tree11/"
+   "status": "오늘 오픈",
+   "note": "프로필 소개 일정 / 링크 페이지 일정표로 마감일 확인 / 브랜드는 캡션 구성안내 상품명(\"뱀부 500 대나무 화장지\" 등) 기준 / 한 롤당 600원대(캡션) / 가격: 상품 링크가 네이버 쇼핑이라 미확인",
+   "source": "https://www.instagram.com/p/DfV0Pp3ksfW/"
   },
   {
    "id": "salgu-baiet",
@@ -1776,14 +1776,14 @@
    "influencer": "@saedek_oins",
    "brand": "홈에센떼",
    "product": "제작 수건",
-   "category": "침구·패브릭",
-   "scope": "제외",
-   "price": "",
+   "category": "생활용품",
+   "scope": "담당",
+   "price": "9,900원~ (정가 13,900원, 판매 페이지 대표가 기준)",
    "start": "2026-11-05",
    "end": "2026-11-08",
    "period": "11/5(목) ~ 11/8(일)",
-   "status": "오픈 예정",
-   "note": "",
+   "status": "오늘 오픈",
+   "note": "수건은 생활용품(담당)으로 재분류 / 11시 이전 주문 당일출고 / 판매 페이지(store.wiredy.io)에서 가격 확인, 20만원 이상 구매 시 핸드타올·발매트 증정",
    "source": "https://my.wiredy.io/saedek_oins"
   },
   {
@@ -1932,7 +1932,7 @@
    "start": "2026-11-04",
    "end": "2026-11-08",
    "period": "11/4 ~ 11/8",
-   "status": "오늘 오픈",
+   "status": "진행 중",
    "note": "11/4 오전 게시물 \"#이씨라메종러그open\", 링크 페이지 \"(~8일까지)\"",
    "source": "https://www.instagram.com/p/DfTJr9sTpLS/"
   },
@@ -2127,23 +2127,23 @@
    "start": "2026-11-04",
    "end": "2026-11-06",
    "period": "11/4(수) 10시 ~ 11/6(금)",
-   "status": "오늘 오픈",
-   "note": "컬리 판매, 11/3 게시물 캡션 기준 (첫 줄엔 \"11시 OPEN\", 본문엔 \"오전 10시 오픈\"으로 표기가 엇갈림)",
+   "status": "진행 중",
+   "note": "컬리 판매, 11/3 게시물 캡션 기준 (첫 줄엔 \"11시 OPEN\", 본문엔 \"오전 10시 오픈\"으로 표기가 엇갈림) / 11/4 1차 품절 후 14시 한정수량 재오픈",
    "source": "https://www.instagram.com/p/DfTQGp0E055/"
   },
   {
    "id": "karu-songwol",
    "influencer": "@karuselli_",
    "brand": "CJ x 송월",
-   "product": "앳센셜 수건",
-   "category": "침구·패브릭",
-   "scope": "제외",
-   "price": "",
+   "product": "앳센셜 멀티스트라이프 선염타월 (10P·20P)",
+   "category": "생활용품",
+   "scope": "담당",
+   "price": "75,900원~ (멀티스트라이프 선염타월 10P 기준 / 20P 139,800원~)",
    "start": "2026-11-05",
    "end": "2026-11-08",
    "period": "11/5 10시 ~ 11/9 0시",
-   "status": "오픈 예정",
-   "note": "",
+   "status": "오늘 오픈",
+   "note": "수건은 생활용품(담당)으로 재분류 / 기간 중 일자별 카카오페이 카드 7% 즉시할인 / CJ온스타일 판매 페이지 기준, 카드 7% 즉시할인 전 금액 / CJ 페이지엔 \"남은기간 6일\"로 표기(링크 페이지는 11/9 0시 마감)",
    "source": "https://link.inpock.co.kr/karuselli_"
   },
   {
@@ -2292,7 +2292,7 @@
    "start": "2026-11-02",
    "end": "2026-11-04",
    "period": "11/2(월) 10시 ~ 11/4 (AWW)",
-   "status": "오늘 마감",
+   "status": "종료",
    "note": "11/2 10시 라이브 60분 본품 증정. 11월엔 순수진액·돌레란·세레미·셀리온 등도 예고됐으나 날짜 미공지",
    "source": "https://www.instagram.com/p/DfOCO61kxAb/"
   },
@@ -2412,7 +2412,7 @@
    "start": "2026-11-02",
    "end": "2026-11-05",
    "period": "11/2(월) 10시 ~ 11/5",
-   "status": "진행 중",
+   "status": "오늘 마감",
    "note": "한정수량, 라디 행거 32,400원·선반형 57,600원",
    "source": "https://www.instagram.com/p/DfOE8YQk3-v/"
   },
@@ -2427,7 +2427,7 @@
    "start": "2026-11-01",
    "end": "2026-11-04",
    "period": "11/1 ~ 11/4 (4일간)",
-   "status": "오늘 마감",
+   "status": "종료",
    "note": "",
    "source": "https://www.instagram.com/p/DfMJZmHlI7x/"
   },
@@ -2487,7 +2487,7 @@
    "start": "2026-11-02",
    "end": "2026-11-05",
    "period": "11/2 ~ 11/5 (4일간)",
-   "status": "진행 중",
+   "status": "오늘 마감",
    "note": "가격: 상품 링크가 네이버 쇼핑이라 미확인",
    "source": "https://www.instagram.com/p/DfOSuCelBiB/"
   },
@@ -2652,7 +2652,7 @@
    "start": "2026-11-02",
    "end": "2026-11-04",
    "period": "11/2(월) ~ 11/4(수)",
-   "status": "오늘 마감",
+   "status": "종료",
    "note": "한정수량, 구매완료 이벤트",
    "source": "https://www.instagram.com/p/DfOKSufErBY/"
   },
@@ -2712,8 +2712,8 @@
    "start": "",
    "end": "2026-11-05",
    "period": "시작일 미표기 ~ 11/5(목) 10시",
-   "status": "진행 중",
-   "note": "공식몰 '공구중' 목록에서 확인",
+   "status": "종료",
+   "note": "공식몰 '공구중' 목록에서 확인 / 11/5 10시 마감, 공식몰 공구중 목록에서 내려감",
    "source": "https://www.casarim.com/"
   },
   {
@@ -2727,8 +2727,8 @@
    "start": "",
    "end": "2026-11-05",
    "period": "시작일 미표기 ~ 11/5(목) 10시",
-   "status": "진행 중",
-   "note": "공식몰 '공구중' 목록에서 확인",
+   "status": "종료",
+   "note": "공식몰 '공구중' 목록에서 확인 / 11/5 10시 마감, 공식몰 공구중 목록에서 내려감",
    "source": "https://www.casarim.com/"
   },
   {
@@ -2817,7 +2817,7 @@
    "start": "2026-11-04",
    "end": "2026-11-08",
    "period": "11/4(수) 10시 ~ 11/8(일)",
-   "status": "오늘 오픈",
+   "status": "진행 중",
    "note": "11/2 공구예고 게시물 기준",
    "source": "https://www.instagram.com/p/DfTI1X-E4gj/"
   },
@@ -2847,7 +2847,7 @@
    "start": "2026-11-04",
    "end": "",
    "period": "11/4(수) 10시 오픈 ~ 마감 미공지",
-   "status": "오늘 오픈",
+   "status": "진행 중",
    "note": "최대 48% 할인",
    "source": "https://www.instagram.com/p/DfPQiCvP0H_/"
   },
@@ -2964,12 +2964,12 @@
    "category": "식품",
    "scope": "제외",
    "price": "",
-   "start": "",
-   "end": "",
-   "period": "오픈일 미공지 (예고)",
-   "status": "오픈 예정",
-   "note": "11/3 공구예고 게시물, 날짜 미표기",
-   "source": "https://www.instagram.com/p/DfRxvbDSqC6/"
+   "start": "2026-11-05",
+   "end": "2026-11-08",
+   "period": "11/5(목) ~ 11/8(일) (4일간)",
+   "status": "오늘 오픈",
+   "note": "11/3 공구예고 게시물, 날짜 미표기 / 고새야비엔나 가격 인상",
+   "source": "https://www.instagram.com/p/DfVz6qNjzGd/"
   },
   {
    "id": "oxo-hanil-bathheater",
@@ -2978,13 +2978,13 @@
    "product": "NEW 욕실 온풍기",
    "category": "생활가전",
    "scope": "담당",
-   "price": "",
+   "price": "139,000원 (공구가)",
    "start": "2026-11-05",
-   "end": "",
-   "period": "11/5(목) 10시 오픈 ~ 마감 미공지",
-   "status": "오픈 예정",
+   "end": "2026-11-09",
+   "period": "11/5(목) 10시 ~ 11/9",
+   "status": "오늘 오픈",
    "note": "11/2 게시물 캡션 기준",
-   "source": "https://www.instagram.com/p/DfRBylHP1qr/"
+   "source": "https://www.instagram.com/p/DfVzR1uk5g-/"
   },
   {
    "id": "oxo-teenieping",
@@ -2997,7 +2997,7 @@
    "start": "2026-11-05",
    "end": "",
    "period": "11/5(목) 21시 오픈 ~ 마감 미공지",
-   "status": "오픈 예정",
+   "status": "오늘 오픈",
    "note": "11/3 게시물 캡션 기준",
    "source": "https://www.instagram.com/p/DfR1QxtvAbi/"
   },
@@ -3012,7 +3012,7 @@
    "start": "2026-11-04",
    "end": "2026-11-10",
    "period": "11/4 ~ 11/10 (7일간)",
-   "status": "오늘 오픈",
+   "status": "진행 중",
    "note": "",
    "source": "https://rara-home.com/goods/goods_info.wiz?Seq=55071"
   },
@@ -3027,9 +3027,144 @@
    "start": "2026-11-04",
    "end": "",
    "period": "11/4 ~ 재고 소진 시 마감",
-   "status": "오늘 오픈",
+   "status": "진행 중",
    "note": "",
    "source": "https://rara-home.com/goods/goods_info.wiz?Seq=55072"
+  },
+  {
+   "id": "deelisa-estra",
+   "influencer": "@de_elisa_shop",
+   "brand": "에스트라",
+   "product": "(품목 미공지)",
+   "category": "뷰티",
+   "scope": "제외",
+   "price": "",
+   "start": "2026-11-16",
+   "end": "",
+   "period": "11/16 오픈 예정",
+   "status": "오픈 예정",
+   "note": "",
+   "source": "https://www.instagram.com/de_elisa_shop/"
+  },
+  {
+   "id": "deelisa-pinillo",
+   "influencer": "@de_elisa_shop",
+   "brand": "핀일로",
+   "product": "고메 + 후라이팬",
+   "category": "주방조리도구·테이블웨어",
+   "scope": "제외",
+   "price": "",
+   "start": "2026-11-18",
+   "end": "",
+   "period": "11/18 오픈 예정",
+   "status": "오픈 예정",
+   "note": "",
+   "source": "https://www.instagram.com/de_elisa_shop/"
+  },
+  {
+   "id": "married-doctors",
+   "influencer": "@married_rim",
+   "brand": "닥터스",
+   "product": "온열매트 (라이브)",
+   "category": "생활가전",
+   "scope": "담당",
+   "price": "",
+   "start": "2026-11-07",
+   "end": "",
+   "period": "11/7 오픈 예정 (마감 미공지)",
+   "status": "오픈 예정",
+   "note": "바이오 일정 기준",
+   "source": "https://www.instagram.com/married_rim/"
+  },
+  {
+   "id": "married-carepod",
+   "influencer": "@married_rim",
+   "brand": "케어팟",
+   "product": "최신상 가습기 X55V (2차)",
+   "category": "생활가전",
+   "scope": "담당",
+   "price": "",
+   "start": "2026-11-10",
+   "end": "",
+   "period": "11/10 오픈 예정 (마감 미공지)",
+   "status": "오픈 예정",
+   "note": "바이오 일정 기준",
+   "source": "https://www.instagram.com/married_rim/"
+  },
+  {
+   "id": "married-urizero",
+   "influencer": "@married_rim",
+   "brand": "유리제로",
+   "product": "(품목 미공지)",
+   "category": "생활용품",
+   "scope": "담당",
+   "price": "",
+   "start": "2026-11-13",
+   "end": "",
+   "period": "11/13 오픈 예정 (마감 미공지)",
+   "status": "오픈 예정",
+   "note": "바이오에 브랜드명만 표기. 유리제로는 청소용품 브랜드(유딘살림 링크의 청소템 목록에 \"유리제로 X9\")로 보여 생활용품으로 분류",
+   "source": "https://www.instagram.com/married_rim/"
+  },
+  {
+   "id": "sjingg-paperbag",
+   "influencer": "@sjingg_",
+   "brand": "페이퍼백",
+   "product": "순수진액·노즈케어 제철할인 (메가세일)",
+   "category": "건강식품",
+   "scope": "제외",
+   "price": "",
+   "start": "2026-11-05",
+   "end": "",
+   "period": "11/5 10시 오픈 ~ 마감 미공지",
+   "status": "오늘 오픈",
+   "note": "11/5 10~12시 2시간 본품 증정 이벤트",
+   "source": "https://www.instagram.com/p/DfVzduHE5dA/"
+  },
+  {
+   "id": "oxo-nametag",
+   "influencer": "@oxo._.dduddu",
+   "brand": "(브랜드 미표기)",
+   "product": "네임택 3종 (최초 공구, 핸드메이드)",
+   "category": "유아·아동",
+   "scope": "제외",
+   "price": "",
+   "start": "2026-11-06",
+   "end": "",
+   "period": "11/6(금) 10시 오픈 ~ 마감 미공지",
+   "status": "오픈 예정",
+   "note": "초미니네임택 5개 9,000원 등, 한정수량",
+   "source": "https://www.instagram.com/p/DfTgUbKP0HU/"
+  },
+  {
+   "id": "rara-triangle",
+   "influencer": "@rara__home_",
+   "brand": "트라이앵글",
+   "product": "조리도구",
+   "category": "주방조리도구·테이블웨어",
+   "scope": "제외",
+   "price": "",
+   "start": "2026-11-05",
+   "end": "",
+   "period": "11/5 ~ 재고 소진 시 마감",
+   "status": "오늘 오픈",
+   "note": "",
+   "source": "https://www.instagram.com/p/DfVseIUlCBW/"
+  },
+  {
+   "id": "rara-sinkcaddy",
+   "influencer": "@rara__home_",
+   "brand": "오리지니크",
+   "product": "싱크캐디 수세미랙 (5차)",
+   "category": "주방 생활용품",
+   "scope": "담당",
+   "price": "29,900원 (소비자가 59,000원)",
+   "start": "2026-11-05",
+   "end": "",
+   "period": "11/5 ~ 재고 소진 시 마감",
+   "status": "오늘 오픈",
+   "note": "판매 페이지 옵션명 \"오리지니크 압연 싱크캐디\"에서 브랜드 확인",
+   "source": "https://rara-home.com/goods/goods_info.wiz?Seq=55089"
   }
  ]
 }
