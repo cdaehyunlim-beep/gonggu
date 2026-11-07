@@ -51,6 +51,23 @@
   .s-live { color: var(--ok); } .s-today { color: var(--bad); } .s-new { color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, transparent); font-weight: 600; } .s-soon { color: var(--warn); } .s-hold, .s-done { color: var(--muted); }
   a { color: inherit; }
   .empty { color: var(--muted); padding: 16px 8px; }
+  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); }
+  .tab { font: inherit; font-size: .95rem; padding: 8px 14px; background: transparent; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; color: var(--muted); cursor: pointer; }
+  .tab[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--fg); font-weight: 600; }
+  .page { display: flex; flex-direction: column; gap: 20px; }
+  .page[hidden] { display: none; }
+  .dayline { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .dayline .lead { font-size: 1.05rem; }
+  .dayline .lead b { font-weight: 600; }
+  button.tile { font: inherit; color: inherit; text-align: left; cursor: pointer; }
+  button.tile[aria-pressed="true"] { border-color: var(--fg); box-shadow: inset 0 0 0 1px var(--fg); }
+  .chart { position: relative; min-height: 150px; }
+  .chart svg { display: block; width: 100%; height: auto; }
+  .chart .bar { cursor: pointer; }
+  .tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,.12); padding: 4px 8px; font-size: .78rem; white-space: nowrap; }
+  .tip .d { color: var(--muted); }
+  td.change { min-width: 8em; max-width: 16em; font-size: .82rem; }
+  td.kind { white-space: nowrap; }
   @media (max-width: 640px) { .hide-narrow { display: none; } h1 { font-size: 1.6rem; } }
 </style>
 </head>
@@ -62,6 +79,12 @@
     <p class="sub">담당 범위: 생활용품·생활가전·주방 생활용품·주방가전(샴푸 포함). 위 숫자는 담당 범위 공구만 센 값이에요.</p>
   </header>
 
+  <nav class="tabs" role="tablist" aria-label="페이지">
+    <button class="tab" role="tab" data-tab="list" aria-selected="true">공구 목록</button>
+    <button class="tab" role="tab" data-tab="daily" aria-selected="false">데일리 업데이트</button>
+  </nav>
+
+  <div class="page" id="page-list">
   <section class="tiles">
     <div class="tile"><div class="lbl">진행 중</div><div class="num" id="n-live">–</div></div>
     <div class="tile"><div class="lbl">오늘 오픈</div><div class="num" id="n-new">–</div></div>
@@ -92,6 +115,40 @@
       <div class="empty" id="empty" hidden>조건에 맞는 공구가 없어요.</div>
     </div>
   </section>
+  </div>
+
+  <div class="page" id="page-daily" hidden>
+    <div class="dayline">
+      <span class="lead"><b id="d-day">–</b> 체크에서 바뀐 공구예요</span>
+      <select id="d-days" aria-label="체크한 날짜"></select>
+      <span class="sep" aria-hidden="true">|</span>
+      <button class="chip scope" data-scope="담당" aria-pressed="true">내 담당만</button>
+      <button class="chip scope" data-scope="" aria-pressed="false">모든 카테고리</button>
+    </div>
+    <section class="tiles">
+      <button class="tile kindtile" data-kind="new" aria-pressed="false"><div class="lbl">새로 잡힌 공구</div><div class="num" data-g="new">–</div></button>
+      <button class="tile kindtile" data-kind="open" aria-pressed="false"><div class="lbl">오픈</div><div class="num" data-g="open">–</div></button>
+      <button class="tile kindtile" data-kind="closing" aria-pressed="false"><div class="lbl">오늘 마감</div><div class="num" data-g="closing">–</div></button>
+      <button class="tile kindtile" data-kind="done" aria-pressed="false"><div class="lbl">종료</div><div class="num" data-g="done">–</div></button>
+      <button class="tile kindtile" data-kind="other" aria-pressed="false"><div class="lbl">일정·가격·브랜드 등</div><div class="num" data-g="other">–</div></button>
+    </section>
+    <section class="card">
+      <h2>날짜별 변경 건수</h2>
+      <p class="note">매일 오전 10시 체크 때 바뀐 건수예요. 막대를 누르면 그날 변경 내역을 볼 수 있어요. 10/31은 체크가 없어 11/1에 함께 들어 있고, 11/3 가격 확인이 많은 건 그날 가격 열을 새로 채웠기 때문이에요.</p>
+      <div class="chart" id="d-chart"></div>
+    </section>
+    <section class="card">
+      <h2>변경 내역</h2>
+      <p class="note">전날 체크와 비교해 새로 잡힌 공구, 상태가 바뀐 공구(오픈·오늘 마감·종료·연기), 기간이 바뀐 공구, 새로 확인한 가격·브랜드예요. ‘오늘 오픈’이 다음 날 ‘진행 중’으로 바뀌는 건 빼고 보여 줘요. 위 칸을 누르면 그 종류만 볼 수 있어요.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>변경</th><th>인플루언서</th><th>브랜드</th><th>제품</th><th>바뀐 내용</th><th class="hide-narrow">가격</th><th>출처</th></tr></thead>
+          <tbody id="d-rows"></tbody>
+        </table>
+        <div class="empty" id="d-empty" hidden>이 날은 해당하는 변경이 없어요.</div>
+      </div>
+    </section>
+  </div>
 </div>
 
 <script>
@@ -165,6 +222,118 @@
       counts(); render();
     })
     .catch(() => { document.getElementById('empty').textContent = '데이터를 불러오지 못했어요. 잠시 후 새로고침해 주세요.'; document.getElementById('empty').hidden = false; });
+
+  // ---- tabs ----
+  const showTab = (tab) => {
+    tab = tab === 'daily' ? 'daily' : 'list';
+    document.getElementById('page-list').hidden = tab !== 'list';
+    document.getElementById('page-daily').hidden = tab !== 'daily';
+    document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
+    if (tab === 'daily') drawDaily();
+  };
+  document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => { history.replaceState(null, '', b.dataset.tab === 'daily' ? '#daily' : '#'); showTab(b.dataset.tab); }));
+
+  // ---- daily updates ----
+  const KIND_G = { '새 공구': 'new', '오픈': 'open', '오늘 마감': 'closing', '종료': 'done' };
+  const KIND_ORDER = { '새 공구': 0, '오픈': 1, '오늘 마감': 2, '종료': 3, '연기': 4, '상태 변경': 5, '일정 변경': 6, '가격 확인': 7, '브랜드 확인': 8 };
+  const KIND_BADGE = { '새 공구': 's-new', '오픈': 's-live', '오늘 마감': 's-today', '종료': 's-done', '연기': 's-soon' };
+  const WD = ['일', '월', '화', '수', '목', '금', '토'];
+  const dayLabel = d => { const x = new Date(d + 'T00:00:00Z'); return `${x.getUTCMonth() + 1}/${x.getUTCDate()} (${WD[x.getUTCDay()]})`; };
+  const ds = { day: '', kind: '' };
+  let UPD = null, DAYS = [];
+  const inScope = r => !state.scope || r.scope === state.scope;
+  const gOf = r => KIND_G[r.kind] || 'other';
+  const SVG = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs) => { const e = document.createElementNS(SVG, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+
+  function drawDaily() {
+    if (!UPD) return;
+    const day = DAYS.includes(ds.day) ? ds.day : (DAYS[0] || '');
+    document.getElementById('d-day').textContent = day ? dayLabel(day) : '–';
+    const sel = document.getElementById('d-days'); sel.value = day;
+    const todays = UPD.filter(r => r.date === day && inScope(r));
+    document.querySelectorAll('.kindtile').forEach(b => {
+      b.setAttribute('aria-pressed', String(b.dataset.kind === ds.kind));
+      b.querySelector('.num').textContent = todays.filter(r => gOf(r) === b.dataset.kind).length;
+    });
+    const list = todays.filter(r => !ds.kind || gOf(r) === ds.kind)
+      .sort((a, b) => (KIND_ORDER[a.kind] ?? 9) - (KIND_ORDER[b.kind] ?? 9) || String(a.influencer).localeCompare(String(b.influencer)));
+    const tbody = document.getElementById('d-rows'); tbody.replaceChildren();
+    for (const r of list) {
+      const tr = document.createElement('tr');
+      if (r.kind === '종료') tr.className = 'done';
+      const td = (t, c) => { const e = document.createElement('td'); if (c) e.className = c; e.textContent = t ?? ''; tr.append(e); return e; };
+      const b = document.createElement('span'); b.className = 'badge ' + (KIND_BADGE[r.kind] || 's-hold'); b.textContent = r.kind; td('', 'kind').append(b);
+      td(r.influencer, 'who'); td(r.brand, 'brand');
+      const pc = td(r.product, 'prod');
+      if (r.category) { const c = document.createElement('span'); c.className = 'cat'; c.textContent = r.category; pc.append(c); }
+      td(r.change, 'change'); td(r.price, 'muted hide-narrow');
+      const lc = td('', 'src');
+      if (/^https:\/\//.test(r.source || '')) {
+        const a = document.createElement('a'); a.href = r.source; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.textContent = r.source.includes('instagram.com/p/') ? '게시물' : r.source.includes('instagram.com') ? '프로필' : '링크';
+        lc.append(a);
+      }
+      tbody.append(tr);
+    }
+    document.getElementById('d-empty').hidden = list.length > 0;
+    document.querySelectorAll('.chip.scope').forEach(c => c.setAttribute('aria-pressed', String((c.dataset.scope || '') === state.scope)));
+    drawChart(day);
+  }
+
+  function drawChart(sel) {
+    const box = document.getElementById('d-chart'); box.replaceChildren();
+    const days = [...DAYS].reverse();
+    const n = days.map(d => UPD.filter(r => r.date === d && inScope(r)).length);
+    if (!days.length) return;
+    const W = Math.max(280, box.clientWidth || 600), H = 150, mt = 18, mb = 22, max = Math.max(1, ...n);
+    const band = (W - 8) / days.length, bw = Math.min(32, band * 0.7);
+    const y = v => H - mb - (H - mb - mt) * v / max;
+    const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': '날짜별 변경 건수' });
+    svg.append(el('line', { x1: 4, x2: W - 4, y1: H - mb, y2: H - mb, stroke: 'var(--line)' }));
+    const tip = document.createElement('div'); tip.className = 'tip'; tip.style.display = 'none';
+    const step = Math.ceil(days.length / Math.max(1, Math.floor(W / 48)));
+    days.forEach((d, i) => {
+      const cx = 4 + band * i + band / 2, on = d === sel;
+      const r = el('rect', { class: 'bar', x: cx - bw / 2, width: bw, y: y(n[i]), height: (H - mb) - y(n[i]), rx: 3, fill: on ? 'var(--fg)' : 'var(--line)' });
+      if (!on) r.style.fill = 'color-mix(in srgb, var(--muted) 45%, transparent)';
+      r.addEventListener('click', () => { ds.day = d; drawDaily(); });
+      r.addEventListener('mousemove', e => {
+        const b = box.getBoundingClientRect();
+        tip.replaceChildren(); const a = document.createElement('div'); a.className = 'd'; a.textContent = dayLabel(d);
+        const c = document.createElement('div'); c.textContent = `변경 ${n[i].toLocaleString('ko-KR')}건`; tip.append(a, c);
+        tip.style.display = '';
+        tip.style.left = Math.max(0, Math.min(e.clientX - b.left + 10, b.width - tip.offsetWidth)) + 'px';
+        tip.style.top = Math.max(0, e.clientY - b.top - 44) + 'px';
+      });
+      r.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+      svg.append(r);
+      const v = el('text', { x: cx, y: y(n[i]) - 4, 'text-anchor': 'middle', 'font-size': 11, fill: 'var(--muted)' }); v.textContent = n[i]; svg.append(v);
+      if (i % step === 0 || on) {
+        const dd = new Date(d + 'T00:00:00Z');
+        const l = el('text', { x: cx, y: H - 6, 'text-anchor': 'middle', 'font-size': 11, fill: on ? 'var(--fg)' : 'var(--muted)' });
+        l.textContent = `${dd.getUTCMonth() + 1}/${dd.getUTCDate()}`; svg.append(l);
+      }
+    });
+    box.append(svg, tip);
+  }
+
+  document.getElementById('d-days').addEventListener('change', e => { ds.day = e.target.value; drawDaily(); });
+  document.querySelectorAll('.kindtile').forEach(b => b.addEventListener('click', () => { ds.kind = ds.kind === b.dataset.kind ? '' : b.dataset.kind; drawDaily(); }));
+  document.querySelectorAll('.chip.scope').forEach(c => c.addEventListener('click', () => { if (UPD) drawDaily(); }));
+  window.addEventListener('resize', () => { if (!document.getElementById('page-daily').hidden && UPD) drawChart(DAYS.includes(ds.day) ? ds.day : DAYS[0]); });
+
+  fetch('updates.json?t=' + Date.now(), { cache: 'no-store' })
+    .then(r => r.json())
+    .then(d => {
+      UPD = Array.isArray(d) ? d : (d.rows || []);
+      DAYS = [...new Set(UPD.map(r => r.date))].sort().reverse();
+      const sel = document.getElementById('d-days');
+      DAYS.forEach(x => sel.append(new Option(dayLabel(x), x)));
+      drawDaily();
+    })
+    .catch(() => { const e = document.getElementById('d-empty'); e.textContent = '변경 기록을 불러오지 못했어요. 잠시 후 새로고침해 주세요.'; e.hidden = false; UPD = null; });
+  showTab(location.hash === '#daily' ? 'daily' : 'list');
 </script>
 </body>
 </html>
